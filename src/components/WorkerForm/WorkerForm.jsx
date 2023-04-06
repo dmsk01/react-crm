@@ -1,9 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { addWorker, editWorker } from "../../store/workersSlice";
 import { formatDate } from "../../utils";
 
-function WorkerForm({ mode, worker = {}, onEdit }) {
+function WorkerForm({ mode = "add", worker = {}, onEdit }) {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState(worker);
@@ -41,11 +41,7 @@ function WorkerForm({ mode, worker = {}, onEdit }) {
   };
 
   return (
-    <form
-      ref={refContainer}
-      onSubmit={(e) => handleSubmitForm(e)}
-      className="mb-3 row"
-    >
+    <form ref={refContainer} className="mb-3 row">
       <div className="mb-3 col-4">
         <label htmlFor="name" className="form-label">
           Name
@@ -122,7 +118,11 @@ function WorkerForm({ mode, worker = {}, onEdit }) {
         />
       </div>
       <div className="mb-3 col">
-        <button type="submit" className="btn btn-primary">
+        <button
+          onClick={(e) => handleSubmitForm(e)}
+          type="button"
+          className="btn btn-primary"
+        >
           {mode === "edit" ? "Edit worker" : "Add worker"}
         </button>
       </div>

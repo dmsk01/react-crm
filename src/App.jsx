@@ -1,15 +1,12 @@
 import React from "react";
-import WorkerTable from "./components/WorkerTable/WorkerTable";
-import AddWorkerForm from "./components/WorkerForm/WorkerForm";
+import WorkerPage from "./pages/WorkerPage/WorkerPage";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
   return (
-    <div className="App">
-      <div className="container">
-        <AddWorkerForm />
-        <WorkerTable />
-      </div>
-    </div>
+    <Layout>
+      <WorkerPage />
+    </Layout>
   );
 };
 

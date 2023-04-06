@@ -3,16 +3,20 @@ import Button from "../Button/Button";
 import EditPersonForm from "../EditPersonForm/EditPersonForm";
 import Modal from "../Modal/Modal";
 
-function EditButton({ id }) {
+interface IEditButton {
+  id: string;
+}
+
+function EditButton({ id }: IEditButton) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
+  const handleOpen = () => {
     setIsOpen(true);
   };
 
   return (
     <React.Fragment>
-      <Button onClick={handleClick} className="btn btn-success mx-1">
+      <Button onClick={handleOpen} className="btn btn-success mx-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -28,7 +32,6 @@ function EditButton({ id }) {
           />
         </svg>
       </Button>
-
       {isOpen && (
         <Modal
           onClose={() => {

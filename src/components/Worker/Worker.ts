@@ -1,5 +1,15 @@
+import { IWorker } from "../../store/types";
+
 export default class WorkerPerson {
-  constructor(id, name, surname, lastname, workStart, birthDate, post) {
+  constructor(
+    private id: string,
+    private name: string,
+    private surname: string,
+    private lastname: string,
+    private workStart: Date,
+    private birthDate: Date,
+    private post: string
+  ) {
     this.id = id;
     this.name = name;
     this.surname = surname;
@@ -19,9 +29,9 @@ export default class WorkerPerson {
   }
 
   get birthDateString() {
-    const yyyy = this.birthDate.getFullYear();
-    let mm = this.birthDate.getMonth() + 1;
-    let dd = this.birthDate.getDate();
+    const yyyy: string | number = this.birthDate.getFullYear();
+    let mm: string | number = this.birthDate.getMonth() + 1;
+    let dd: string | number = this.birthDate.getDate();
     if (mm < 10) mm = "0" + mm.toString();
     if (dd < 10) dd = "0" + dd.toString();
 
