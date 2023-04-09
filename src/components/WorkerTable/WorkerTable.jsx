@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteWorker } from "../../store/workersSlice";
 import "./style.css";
 import WorkerRow from "./WorkerRow";
+import Search from "../Search/Search";
 
 function getSortedWorkers(workers, prop, dir) {
   const workersCopy = [...workers];
@@ -23,11 +24,21 @@ function WorkerTable() {
   const dispatch = useDispatch();
   const [workersState, setWorkersState] = useState(workers);
   const [sortDirection, setSortDirection] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const sortedWorkers = getSortedWorkers(workers, "name", false);
-    setWorkersState(sortedWorkers);
-  }, [workers]);
+    const filteredWorkers = sortedWorkers.filter((worker) => {
+      if (searchQuery.trim().length) {
+        return Object.values(worker).some((prop) =>
+          prop.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      }
+      return worker;
+    });
+    setWorkersState(filteredWorkers);
+    // setWorkersState(sortedWorkers);
+  }, [workers, searchQuery]);
 
   const handleTableHeadClick = (e) => {
     const sortField = e.target.dataset.sort;
@@ -49,9 +60,17 @@ function WorkerTable() {
 
   const handleEditPerson = () => {};
 
+  const handleSearchChange = (query) => {
+    setSearchQuery(query);
+  };
+
   return (
     <section>
-      <h1>Workers</h1>
+      <div className="heading">
+        <h1>Workers</h1>
+        <Search onChange={handleSearchChange} />
+      </div>
+
       <table className="table table-striped table-hover">
         <thead>
           <tr>

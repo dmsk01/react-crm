@@ -1,5 +1,7 @@
 import React from "react";
 import "./header.css";
+import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -7,19 +9,19 @@ function Header() {
       <nav className="header__menu">
         <ul className="header__list">
           <li className="header__item">
-            <a href="#" className="header__link">
+            <Link to="/" className="header__link">
               List
-            </a>
+            </Link>
           </li>
           <li className="header__item">
-            <a href="#" className="header__link">
+            <Link to="/tasks" className="header__link">
               Tasks
-            </a>
+            </Link>
           </li>
           <li className="header__item">
-            <a href="#" className="header__link">
+            <Link to="/schedule" className="header__link">
               Schedule
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

@@ -1,13 +1,12 @@
 import React from "react";
 import Header from "../../components/Header/Header";
 
-function LoginPage() {
+function TasksPage() {
   return (
     <>
-      <Header />
-      <div>LoginPage</div>
+      <div>TasksPage</div>
     </>
   );
 }
 
-export default LoginPage;
+export default TasksPage;

@@ -1,16 +1,17 @@
 import React from "react";
 import WorkerTable from "../../components/WorkerTable/WorkerTable";
 import WorkerForm from "../../components/WorkerForm/WorkerForm";
+import Header from "../../components/Header/Header";
 
 const NOOP = () => void 0;
 
-function WorkerPage() {
+function WorkersListPage() {
   return (
-    <div>
+    <>
       <WorkerForm mode="add" onEdit={NOOP} />
       <WorkerTable />
-    </div>
+    </>
   );
 }
 
-export default WorkerPage;
+export default WorkersListPage;
