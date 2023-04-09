@@ -1,6 +1,9 @@
 import React from "react";
 import EditButton from "../EditButton/EditButton";
 import WorkerPerson from "../Worker/Worker";
+import { Link } from "react-router-dom";
+
+import "./style.css";
 
 function WorkerRow({ worker, handleDeletePerson, handleEditPerson }) {
   const { id, name, surname, lastname, workStart, birthDate, post } = worker;
@@ -15,8 +18,10 @@ function WorkerRow({ worker, handleDeletePerson, handleEditPerson }) {
   );
 
   return (
-    <tr key={worker.id}>
-      <td>{workerObject.fullName}</td>
+    <tr className="worker" key={worker.id}>
+      <td className="worker__link">
+        <Link to={`workers/${worker.id}`}>{workerObject.fullName}</Link>
+      </td>
       <td>
         {workerObject.birthDateString} ({workerObject.age} y.o.)
       </td>

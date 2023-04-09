@@ -1,16 +1,17 @@
 import React from "react";
 import Header from "../Header/Header";
+import { Outlet } from "react-router-dom";
 
-interface ILayout {
-  children: React.ReactNode;
-}
-
-function Layout({ children }: ILayout) {
+function Layout() {
   return (
-    <div className="container">
+    <>
       <Header />
-      {children}
-    </div>
+      <main>
+        <div className="container">
+          <Outlet />
+        </div>
+      </main>
+    </>
   );
 }
 

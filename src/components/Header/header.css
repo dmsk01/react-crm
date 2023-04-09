@@ -1,4 +1,6 @@
 .header__list {
+  margin: 0;
+  padding: 0;
   list-style: none;
   display: flex;
 }
@@ -8,5 +10,15 @@
 }
 
 .header__link {
+  color: #666;
   text-decoration: none;
+  transition: color 0.3s ease 0s;
+}
+
+.header__link.active {
+  color: red;
+}
+
+.header__link:hover {
+  color: rgb(55, 187, 154);
 }
